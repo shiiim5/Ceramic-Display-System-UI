@@ -1,0 +1,128 @@
+<div class="page-wrapper">
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-badge">
+        🎨 Premium Ceramic Display Solutions
+      </div>
+      <h1 class="hero-title">
+        Elevate Your<br />
+        <span class="hero-gradient">Ceramic Showcase</span>
+      </h1>
+      <p class="hero-description">
+        Transform your retail space with intelligent display systems designed for premium ceramics, tiles, and artisan collections.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn-hero-primary">
+          Start Free Trial
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+        <button class="btn-hero-secondary">Watch Demo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Why Choose CeraDisplay?</h2>
+        <p class="section-subtitle">Everything you need to showcase ceramics beautifully</p>
+      </div>
+      <div class="features-grid">
+        <div *ngFor="let feature of features; let i = index" class="feature-card">
+          <div class="feature-icon">
+            <svg *ngIf="i === 0" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <svg *ngIf="i === 1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+            <svg *ngIf="i === 2" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+          </div>
+          <h3 class="feature-title">{{ feature.title }}</h3>
+          <p class="feature-description">{{ feature.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="pricing-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Simple, Transparent Pricing</h2>
+        <p class="section-subtitle">Choose the plan that fits your showroom</p>
+      </div>
+      <div class="pricing-grid">
+        <div *ngFor="let plan of plans" class="pricing-card" [class.popular]="plan.popular">
+          <div *ngIf="plan.popular" class="popular-badge">Most Popular</div>
+          <h3 class="plan-name">{{ plan.name }}</h3>
+          <div class="plan-price-wrapper">
+            <span class="plan-price">{{ plan.price }}</span>
+            <span class="plan-period">/month</span>
+          </div>
+          <ul class="plan-features">
+            <li *ngFor="let feature of plan.features" class="plan-feature">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              {{ feature }}
+            </li>
+          </ul>
+          <button class="plan-button" [class.plan-button-popular]="plan.popular">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Loved by Ceramic Retailers</h2>
+        <p class="section-subtitle">See what our customers have to say</p>
+      </div>
+      <div class="testimonials-grid">
+        <div *ngFor="let testimonial of testimonials" class="testimonial-card">
+          <div class="stars">
+            <svg *ngFor="let star of [1,2,3,4,5]" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <p class="testimonial-text">"{{ testimonial.text }}"</p>
+          <div>
+            <div class="testimonial-name">{{ testimonial.name }}</div>
+            <div class="testimonial-role">{{ testimonial.role }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <h2 class="cta-title">Ready to Transform Your Showroom?</h2>
+      <p class="cta-description">Join hundreds of ceramic retailers showcasing their collections beautifully</p>
+      <button class="cta-button">Start Your Free Trial Today</button>
+    </div>
+  </section>
+
+
+</div>
