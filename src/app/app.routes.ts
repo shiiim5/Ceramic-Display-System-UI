@@ -4,11 +4,11 @@ import { LoginComponent } from './components/login-component/login-component';
 import { RegisterComponent } from './components/register-component/register-component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, pathMatch: 'full' },
 
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: 'register', component: RegisterComponent, pathMatch: 'full' },
 
  
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'home' }
 ];

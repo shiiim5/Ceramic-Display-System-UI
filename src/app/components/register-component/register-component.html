@@ -1,58 +1,79 @@
 <div class="page-center">
-    <div class="register-container" [formGroup]="registerForm">
-  <p class="title">Sign up to continue</p>
-
-  <!-- ROLE SWITCH -->
-  <div class="role-tabs">
-    <button 
-      class="tab" 
-      [class.active]="role === 'admin'"
-      (click)="setRole('admin')">
-      Admin
-    </button>
+  <form class="register-container" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     
-    <button 
-      class="tab"
-      [class.active]="role === 'taxPayer'"
-      (click)="setRole('taxPayer')">
-      TaxPayer
-    </button>
-  </div>
+    <p class="title">Sign up to continue</p>
 
-   <!-- Role -->
-<input type="hidden" formControlName="role">
+    <!-- ROLE SWITCH -->
+    <div class="role-tabs">
+      <button 
+        type="button"
+        class="tab" 
+        [class.active]="role === 0"
+        (click)="setRole('admin')">
+        Admin
+      </button>
+      
+      <button 
+        type="button"
+        class="tab"
+        [class.active]="role === 1 "
+        (click)="setRole('seller')">
+        Seller
+      </button>
+    </div>
 
+    <!-- Hidden Role -->
+    <input type="hidden" formControlName="role">
 
-  <!-- Name -->
-  <label>Name</label>
-  <input type="text" formControlName="name">
-  <div class="err" *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
-    <span *ngIf="registerForm.get('name')?.errors?.['required']">Name is required.</span>
-    <span *ngIf="registerForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters.</span>
-  </div>
+    <!-- USERNAME -->
+    <label>UserName</label>
+    <input type="text" formControlName="username">
+    <div class="err" *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid">
+      <span *ngIf="registerForm.get('username')?.errors?.['minlength']">
+        Name must be at least 3 characters.
+      </span>
+    </div>
 
-  <!-- EMAIL -->
-  <label>Email</label>
-  <input type="email" placeholder="admin@ceramicview.com" formControlName="email">
-  <div class="err" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
-    <span *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</span>
-    <span *ngIf="registerForm.get('email')?.errors?.['email']">Enter a valid email.</span>
-  </div>
+    <!-- EMAIL -->
+    <label>Email</label>
+    <input type="email" placeholder="admin@ceramicview.com" formControlName="email">
+    <div class="err" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+      <span *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</span>
+      <span *ngIf="registerForm.get('email')?.errors?.['email']">Enter a valid email.</span>
+    </div>
 
-  <!-- PASSWORD -->
-  <label>Password</label>
-  <input type="password" formControlName="password">
-  <div class="err" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
-    <span *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</span>
-    <span *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</span>
-  </div>
+    <!-- PASSWORD -->
+    <label>Password</label>
+    <input type="password" formControlName="password">
+    <div class="err" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+      <span *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</span>
+      <span *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</span>
+    </div>
 
-  <!-- BUTTON -->
-  <button class="submit-btn" [disabled]="registerForm.invalid" (click)="onSubmit()">
-    Sign Up as {{ role === 'admin' ? 'Admin' : 'TaxPayer' }}
-  </button>
-
-  <a class="back-link" routerLink="/auth/login">Back to Home</a>
+    <!-- CONFIRM PASSWORD -->
+    <label>Confirm Password</label>
+    <input type="password" formControlName="confirmPassword">
+    <div class="err" *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid">
+      <span *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</span>
+    </div>
+    <div class="err"
+     *ngIf="
+        registerForm.get('confirmPassword')?.touched &&
+        registerForm.hasError('passwordMismatch')
+     ">
+    <span>Passwords do not match.</span>
 </div>
 
+
+    <!-- ADDRESS -->
+    <label>Address</label>
+    <input type="text" formControlName="address">
+
+    <!-- SUBMIT BUTTON -->
+    <button class="submit-btn" type="submit"  [disabled]="registerForm.invalid">
+      Sign Up as {{ role === 0 ? 'Admin' : 'Seller'  }}
+    </button>
+
+    <a class="back-link" routerLink="">Back to Home</a>
+  </form>
 </div>

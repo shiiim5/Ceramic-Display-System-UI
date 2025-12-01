@@ -2,6 +2,7 @@ import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-login-component',
@@ -13,9 +14,9 @@ export class LoginComponent {
 loginForm: FormGroup;
    errorMessage = '';
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder,private authService:AuthService, private router: Router) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      usernameOrEmail: ['',Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -25,16 +26,17 @@ loginForm: FormGroup;
   }
 
   onSubmit() {
-    // if (this.loginForm.invalid) {
-    //   this.errorMessage = "Please fill all fields correctly.";
-    //   return;
-    // }
-    // if (this.loginForm.valid) {
-    //   this.auth.login(this.loginForm.value).subscribe(
-    //     (res) => console.log("Logged in!", res),
-    //     (err) => console.log("Error", err)
-    //   );
-    //     this.router.navigate(['invoice/submit']);
-    // }
+    if (this.loginForm.invalid) {
+      this.errorMessage = "Please fill all fields correctly.";
+      return;
+    }
+    if (this.loginForm.valid) {
+      console.log(this.loginForm.value);
+      this.authService.login(this.loginForm.value).subscribe(
+        (res) => console.log("Logged in!", res),
+        (err) => console.log("Error", err)
+      );
+        this.router.navigate(['']);
+    }
   }
 }

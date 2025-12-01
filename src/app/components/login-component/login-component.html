@@ -10,14 +10,11 @@
       <div class="input-group">
         <label>Email</label>
 
-        <input type="email" formControlName="email" placeholder="Email" />
+        <input type="text" formControlName="usernameOrEmail" placeholder="Username Or Email" />
 
-        <div class="err" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
-          <span *ngIf="loginForm.get('email')?.errors?.['required']">
+        <div class="err" *ngIf="loginForm.get('usernameOrEmail')?.touched && loginForm.get('usernameOrEmail')?.invalid">
+          <span *ngIf="loginForm.get('usernameOrEmail')?.errors?.['required']">
             *Email is required.
-          </span>
-          <span *ngIf="loginForm.get('email')?.errors?.['email']">
-            *Enter a valid email.
           </span>
         </div>
       </div>
@@ -39,7 +36,7 @@
         </div>
       </div>
 
-      <button type="submit" class="btn-login">Login</button>
+      <button type="submit" class="btn-login" (click)="onSubmit()">Login</button>
 
       <a class="back-link" routerLink="/">Back to Home</a>
       <div class="signup-link">
