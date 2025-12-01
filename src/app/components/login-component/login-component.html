@@ -1,0 +1,50 @@
+<div class="page-center">
+  <div class="login-container">
+    <div class="title">Welcome back</div>
+    <div class="subtitle">Sign in to continue</div>
+
+    
+    <form [formGroup]="loginForm">
+
+    
+      <div class="input-group">
+        <label>Email</label>
+
+        <input type="email" formControlName="email" placeholder="Email" />
+
+        <div class="err" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+          <span *ngIf="loginForm.get('email')?.errors?.['required']">
+            *Email is required.
+          </span>
+          <span *ngIf="loginForm.get('email')?.errors?.['email']">
+            *Enter a valid email.
+          </span>
+        </div>
+      </div>
+
+
+      <div class="input-group">
+        <label>Password</label>
+
+       
+        <input type="password" formControlName="password" placeholder="Password" />
+
+        <div class="err" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+          <span *ngIf="loginForm.get('password')?.errors?.['required']">
+            *Password is required.
+          </span>
+          <span *ngIf="loginForm.get('password')?.errors?.['minlength']">
+            *Password must be at least 6 characters.
+          </span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-login">Login</button>
+
+      <a class="back-link" routerLink="/">Back to Home</a>
+      <div class="signup-link">
+        Don't have an account? <a routerLink="/register">Sign Up</a>
+      </div>
+    </form>
+  </div>
+</div>

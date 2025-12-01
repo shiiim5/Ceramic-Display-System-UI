@@ -1,0 +1,58 @@
+<div class="page-center">
+    <div class="register-container" [formGroup]="registerForm">
+  <p class="title">Sign up to continue</p>
+
+  <!-- ROLE SWITCH -->
+  <div class="role-tabs">
+    <button 
+      class="tab" 
+      [class.active]="role === 'admin'"
+      (click)="setRole('admin')">
+      Admin
+    </button>
+    
+    <button 
+      class="tab"
+      [class.active]="role === 'taxPayer'"
+      (click)="setRole('taxPayer')">
+      TaxPayer
+    </button>
+  </div>
+
+   <!-- Role -->
+<input type="hidden" formControlName="role">
+
+
+  <!-- Name -->
+  <label>Name</label>
+  <input type="text" formControlName="name">
+  <div class="err" *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
+    <span *ngIf="registerForm.get('name')?.errors?.['required']">Name is required.</span>
+    <span *ngIf="registerForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters.</span>
+  </div>
+
+  <!-- EMAIL -->
+  <label>Email</label>
+  <input type="email" placeholder="admin@ceramicview.com" formControlName="email">
+  <div class="err" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+    <span *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</span>
+    <span *ngIf="registerForm.get('email')?.errors?.['email']">Enter a valid email.</span>
+  </div>
+
+  <!-- PASSWORD -->
+  <label>Password</label>
+  <input type="password" formControlName="password">
+  <div class="err" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+    <span *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</span>
+    <span *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</span>
+  </div>
+
+  <!-- BUTTON -->
+  <button class="submit-btn" [disabled]="registerForm.invalid" (click)="onSubmit()">
+    Sign Up as {{ role === 'admin' ? 'Admin' : 'TaxPayer' }}
+  </button>
+
+  <a class="back-link" routerLink="/auth/login">Back to Home</a>
+</div>
+
+</div>
