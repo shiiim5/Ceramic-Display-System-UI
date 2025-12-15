@@ -10,7 +10,4 @@ import { RouterLink } from "@angular/router";
 })
 export class NavbarComponent {
 
- scrollToSection(sectionId: string) {
-  document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-}
 }

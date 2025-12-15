@@ -1,0 +1,158 @@
+<div class="page-wrapper">
+ <div class="container">
+     <h2>Manage Products</h2>
+
+  <!-- Search & Filters -->
+  <div class="top-bar">
+    <div class="search-box">
+      <input
+        type="text"
+        placeholder="Search..."
+        [(ngModel)]="searchText"
+        (input)="onSearch()"
+      />
+    </div>
+
+    
+
+    <button class="btn add-btn" routerLink="/addproduct">
+      + Add Product
+    </button>
+  </div>
+
+
+<div class="filters-panel">
+  <div class="filter-item">
+    <label for="category">Category</label>
+    <select id="category" [(ngModel)]="selectedCategory">
+      <option value="">All Categories</option>
+      <option value="Walls">Walls</option>
+      <option value="Floor">Floor</option>
+      <option value="Bathroom">Bathroom</option>
+      <option value="Kitchen">Kitchen</option>
+    </select>
+  </div>
+
+  <div class="filter-item">
+    <label for="quality">Quality</label>
+    <select id="quality" [(ngModel)]="selectedQuality">
+      <option value="">All Quality</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+    </select>
+  </div>
+
+  <div class="filter-item price-range">
+    <label>Price Range</label>
+    <div class="price-inputs">
+      <input type="number" placeholder="Min" [(ngModel)]="minPrice" />
+      <span>-</span>
+      <input type="number" placeholder="Max" [(ngModel)]="maxPrice" />
+    </div>
+  </div>
+
+  <div class="filter-item">
+    <label for="sortby">Sort By</label>
+    <select id="sortby" [(ngModel)]="sortBy" class="sort-select">
+      <option value="">Default</option>
+      <option value="price_asc">Price ↑</option>
+      <option value="price_desc">Price ↓</option>
+      <option value="name">Name</option>
+      <option value="date">Newest</option>
+    </select>
+  </div>
+<div class="filter-item filter-actions">
+  <button class="btn filter-btn" (click)="filterProducts()">Apply</button>
+ 
+</div>
+<div class="filter-item filter-actions">
+  <button class="btn reset-btn" (click)="resetFilters()">Reset</button>
+</div>
+
+</div>
+
+
+
+  <!-- Product Table -->
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Price / Sqm</th>
+          <th>Quality</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let product of filtered">
+          <td>
+            <div class="img-box"></div>
+          </td>
+
+          <td>{{ product.name |titlecase}}</td>
+
+    
+          <td>{{ product.category }}</td>
+
+          <td>{{ product.pricePerSqm | currency}}</td>
+
+          <td>
+          <span class="tag ">{{ product.qualityGrade | qualityGrade }}</span>
+
+          </td>
+
+          <td class="actions">
+            <button class="icon-btn" routerLink="/editproduct/{{product.id}}">✏️</button>
+            <button class="icon-btn" routerLink="/editproduct/{{product.id}}">🗑️</button>
+          </td>
+        </tr>
+
+
+
+
+
+        <tr *ngIf="filtered.length === 0">
+          <td colspan="6" style="text-align:center; padding:40px; color: red;">
+            No products found
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+     <div class="pagination">
+  <!-- Previous button -->
+  <button
+    class="btn page-btn"
+    [disabled]="pageNumber === 1"
+    (click)="changePage(pageNumber - 1)">
+    ‹
+  </button>
+
+  <!-- Page numbers -->
+  <button
+    *ngFor="let p of pages"
+    class="page-btn"
+    [class.active]="pageNumber === p"
+    [disabled]="pageNumber === p"
+    (click)="changePage(p)">
+    {{ p }}
+  </button>
+
+  <!-- Next button -->
+  <button
+    class="btn page-btn"
+    [disabled]="pageNumber === totalPages || totalPages === 0"
+    (click)="changePage(pageNumber + 1)">
+    ›
+  </button>
+</div>
+
+ </div>
+</div>

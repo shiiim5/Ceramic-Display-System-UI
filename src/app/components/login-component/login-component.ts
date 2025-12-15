@@ -25,18 +25,28 @@ loginForm: FormGroup;
     return this.loginForm.controls;
   }
 
-  onSubmit() {
-    if (this.loginForm.invalid) {
-      this.errorMessage = "Please fill all fields correctly.";
-      return;
-    }
-    if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
-      this.authService.login(this.loginForm.value).subscribe(
-        (res) => console.log("Logged in!", res),
-        (err) => console.log("Error", err)
-      );
-        this.router.navigate(['']);
-    }
+ onSubmit() {
+  if (this.loginForm.invalid) {
+    this.errorMessage = "*Please fill all fields correctly.";
+    return;
   }
+
+  this.authService.login(this.loginForm.value).subscribe(
+    (res: any) => {
+
+      localStorage.setItem("token", res.data.accessToken);
+
+     if(res.data.roles[0]="admin"){
+       this.router.navigate(['/product']);
+        
+     }else{
+       this.router.navigate(['']);
+     }
+    },
+    (err) => {
+      this.errorMessage = "*Invalid login credentials";
+    }
+  );
+}
+
 }

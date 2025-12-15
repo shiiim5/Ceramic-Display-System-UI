@@ -35,6 +35,10 @@
           </span>
         </div>
       </div>
+  <div class="err">
+    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+  </div>
+
 
       <button type="submit" class="btn-login" (click)="onSubmit()">Login</button>
 

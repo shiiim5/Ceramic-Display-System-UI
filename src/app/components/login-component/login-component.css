@@ -38,7 +38,7 @@ label {
 
 /* INPUT */
 input {
-  width: 100%;
+  width: 95%;
   padding: 12px;
   margin-top: 6px;
   border-radius: 6px;
@@ -50,7 +50,7 @@ input {
 }
 
 input:focus {
-  border-color: #facc15;
+  border-color: #f97316;
   box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.3);
 }
 
@@ -58,9 +58,9 @@ input:focus {
 .btn-login {
   width: 100%;
   padding: 14px;
-  background: #facc15;
+  background: #f97316;
   border: none;
-  color: #000;
+  color: white;
   font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
@@ -69,7 +69,7 @@ input:focus {
 }
 
 .btn-login:hover {
-  background: #eab308;
+  background: #d97706;
 }
 
 /* LINKS */
@@ -92,7 +92,7 @@ input:focus {
 }
 
 .signup-link a{
-    color: #facc15;
+    color: #f97316;
     font-weight: 600;
     text-decoration: none;
     margin-left: 5px;

@@ -1,0 +1,308 @@
+.page-wrapper {
+ padding: 2rem;
+  display: flex;
+  justify-content: center;
+  background: #f7f7f8;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+.container{
+
+background: #ffffff;
+font-family: 'Inter', sans-serif;
+ padding: 2rem;
+ width: 90%;
+ margin-top: 50px;    
+ border-radius: 14px;
+ border: 1px solid #eee;
+ box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+ transition: box-shadow 0.2s ease;
+
+}
+
+
+
+h2 {
+font-size: 28px;
+margin-bottom: 20px;
+font-weight: 600;
+}
+
+
+.top-bar {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 20px;
+}
+
+
+.search-box input {
+width: 500px;
+padding: 10px 14px;
+border-radius: 8px;
+border: 1px solid #e0e0e0;
+outline: none;
+}
+
+
+.btn {
+padding: 10px 16px;
+border-radius: 8px;
+border: none;
+cursor: pointer;
+font-size: 14px;
+}
+
+
+.filter-btn {
+background: #f97316;
+color: white;
+font-weight: 600;
+width: 150px;
+margin-left: 70px;
+}
+
+
+.add-btn {
+margin-left: auto;
+background: #f97316;
+font-weight: 600;
+color: white;
+margin-right: 20px;
+}
+
+
+
+.table-wrapper {
+  background: #ffffff;
+  margin-top: 40px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+}
+
+thead th {
+  text-align: left;
+  color: #666;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 12px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+tbody td {
+  padding: 12px 10px;
+  font-size: 14px;
+  font-weight: 430;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+  text-align: left;
+}
+
+
+.img-box {
+  width: 50px;
+  height: 50px;
+  background: #e0e0e0;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ad7c00; 
+  background-color: #fff4d6;
+}
+
+
+
+
+
+
+.icon-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.2s;
+  padding: 7px;
+}
+
+.icon-btn:hover {
+  color: #007bff;
+}
+
+
+tbody td[colspan="6"] {
+  font-weight: 500;
+}
+.filters-panel {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #eee;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  align-items: end;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* ensures items shrink correctly */
+}
+
+.filters-panel select,
+.filters-panel input {
+  width: 100%; /* make inputs take full width of their container */
+  box-sizing: border-box; /* include padding in width */
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filters-panel select:focus,
+.filters-panel input:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 2px rgba(249,115,22,0.2);
+}
+
+.price-range .price-inputs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.price-range .price-inputs input {
+  flex: 1; /* evenly divide space */
+  min-width: 0; /* fix flexbox overflow issues */
+}
+
+.price-range .price-inputs span {
+  font-weight: 600;
+  color: #888;
+}
+
+.filter-actions {
+  justify-self: start;
+}
+
+.filter-item label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+option {
+ font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 6px;
+}
+.filter-btn {
+
+  background: #f97316;
+  color: #fff;
+  font-weight: 600;
+  width: 150px;
+  padding: 10px 0;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.reset-btn {
+  background: #e0e0e0;
+  color: #555;
+  font-weight: 600;
+  width: 150px;
+  padding: 10px 0;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.reset-btn:hover {
+  background: #cfcfcf;
+}
+
+.filter-btn:hover {
+  background: #e8590c;
+}
+
+
+/* Pagination Wrapper */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 25px;
+}
+
+/* Pagination Buttons */
+.pagination button {
+  min-width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* Hover */
+.pagination button:hover {
+  background: #f97316;
+  color: white;
+  border-color: #f97316;
+}
+
+/* Active Page */
+.pagination button.active {
+  background: #f97316;
+  color: white;
+  border-color: #f97316;
+  font-weight: 600;
+}
+
+/* Disabled */
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Sort Dropdown */
+.sort-select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  font-size: 14px;
+}

@@ -42,8 +42,8 @@
 
 
 .role-tabs .tab.active {
-  background: #ffc727;
-  color: #000;                
+  background: #f97316;
+  color: white;                
 }
 
 /* Labels */
@@ -69,7 +69,7 @@ input {
 }
 
 input:focus {
-  border-color: #facc15;
+  border-color: #f97316;
   box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.3);
 }
 
@@ -77,9 +77,9 @@ input:focus {
 .submit-btn {
   width: 100%;
   padding: 14px;
-  background: #facc15;
+  background: #f97316;
   border: none;
-  color: #000;
+  color: white;
   font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
@@ -88,7 +88,7 @@ input:focus {
 }
 
 .submit-btn:hover {
-  background: #eab308;
+  background: #d97706;
 }
 
 /* Back Link */

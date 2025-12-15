@@ -1,0 +1,140 @@
+<div class="container">
+    <div class="card">
+        <h3 class="card-title">Product Information</h3>
+
+        <form [formGroup]="productForm">
+
+            <!-- BASIC INFO -->
+            <div class="section-title">Basic Information</div>
+
+            <div class="row double">
+                <div class="field">
+                    <label>Product Name*</label>
+                    <input formControlName="name" placeholder="Product Name" />
+                    <div class="error" *ngIf="productForm.get('name')?.touched && productForm.get('name')?.invalid">
+                        <p *ngIf="productForm.get('name')?.errors?.['required']">Name is required</p>
+                        <p *ngIf="productForm.get('name')?.errors?.['minlength']">Name must be at least 2 characters</p>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Category*</label>
+                    <select formControlName="category">
+                        <option disabled value="">Select Category</option>
+                        <option *ngFor="let category of categories; trackBy: trackById" [value]="category.id">
+                            {{ category.name }}
+                        </option>
+                    </select>
+                    <div class="error"
+                        *ngIf="productForm.get('category')?.touched && productForm.get('category')?.invalid">
+                        <p>Category is required</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row double">
+                <div class="field">
+                    <label>Quality*</label>
+                    <select formControlName="qualityGrade">
+                        <option disabled value="">Select Quality</option>
+                        <option *ngFor="let q of qualities; trackBy: trackById" [value]="q.id">{{ q.name }}</option>
+                    </select>
+                    <div class="error"
+                        *ngIf="productForm.get('qualityGrade')?.touched && productForm.get('qualityGrade')?.invalid">
+                        <p>Quality grade is required</p>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Type*</label>
+                    <select formControlName="type">
+                        <option disabled value="">Select Type</option>
+                        <option *ngFor="let t of types; trackBy: trackById" [value]="t.id">{{ t.name }}</option>
+                    </select>
+                    <div class="error" *ngIf="productForm.get('type')?.touched && productForm.get('type')?.invalid">
+                        <p>Type is required</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DETAILS -->
+            <div class="section-title">Product Details</div>
+
+            <div class="row">
+                <div class="field">
+                    <label>Quantity*</label>
+                    <input type="number" formControlName="quantity" placeholder="Quantity" />
+                    <div class="error"
+                        *ngIf="productForm.get('quantity')?.touched && productForm.get('quantity')?.invalid">
+                        <p *ngIf="productForm.get('quantity')?.errors?.['required']">Quantity is required</p>
+                        <p *ngIf="productForm.get('quantity')?.errors?.['min']">Minimum 1 sqm</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row double">
+                <div class="field">
+                    <label>Price Per Sqm*</label>
+                    <input type="number" formControlName="pricePerSqm" placeholder="Price per Sq.m" />
+                    <div class="error"
+                        *ngIf="productForm.get('pricePerSqm')?.touched && productForm.get('pricePerSqm')?.invalid">
+                        <p *ngIf="productForm.get('pricePerSqm')?.errors?.['required']">Price is required</p>
+                        <p *ngIf="productForm.get('pricePerSqm')?.errors?.['min']">Must be at least 10 EGP</p>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Pieces Per Box*</label>
+                    <input type="number" formControlName="piecesPerBox" placeholder="Pieces per Box" />
+                    <div class="error"
+                        *ngIf="productForm.get('piecesPerBox')?.touched && productForm.get('piecesPerBox')?.invalid">
+                        <p *ngIf="productForm.get('piecesPerBox')?.errors?.['required']">Pieces per box is required</p>
+                        <p *ngIf="productForm.get('piecesPerBox')?.errors?.['min']">Must be at least 1</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row double" formGroupName="size">
+                <div class="field">
+                    <label>Length (cm)*</label>
+                    <input type="number" formControlName="length" placeholder="Length" />
+                    <div class="error"
+                        *ngIf="productForm.get('size.length')?.touched && productForm.get('size.length')?.invalid">
+                        <p *ngIf="productForm.get('size.length')?.errors?.['required']">Length is required</p>
+                        <p *ngIf="productForm.get('size.length')?.errors?.['min']">Min length is 10 cm</p>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Width (cm)*</label>
+                    <input type="number" formControlName="width" placeholder="Width" />
+                    <div class="error"
+                        *ngIf="productForm.get('size.width')?.touched && productForm.get('size.width')?.invalid">
+                        <p *ngIf="productForm.get('size.width')?.errors?.['required']">Width is required</p>
+                        <p *ngIf="productForm.get('size.width')?.errors?.['min']">Min width is 10 cm</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IMAGES -->
+            <div class="section-title">Product Images</div>
+            <div class="product-imgs">
+                <div *ngIf="product?.productImages?.length === 0" class="no-images">
+                    No images available
+                </div>
+
+                <div *ngFor="let img of product?.productImages; let i = index" class="image-wrapper">
+                   <img [src]="img.imageURL" [alt]="product?.name" loading="lazy" />
+                    <button type="button" (click)="removeImage(img.id)">🗑️</button>
+                </div>
+            </div>
+
+
+
+            <div class="btns">
+                <button class="btn update-btn" (click)="updateProduct()">Update Product</button>
+                <button class="btn delete-btn" (click)="deleteProduct()">Delete Product</button>
+            </div>
+        </form>
+    </div>
+</div>
